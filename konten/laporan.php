@@ -81,6 +81,26 @@
             
             
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        Laporan Pengeluaran
+                    </div>
+                    <div class="card-body">
+                        <form action="pdf/output/rekap_pengeluaran.php" method="GET" target="blank">
+                        <label for="awal">Tanggal Awal</label>
+                        <input type="date" name="awal" class="form-control" required>
+                        <label for="akhir">Tanggal Akhir</label>
+                        <input type="date" name="akhir" class="form-control" required>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">Cetak</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
              
         
       </div><!-- /.container-fluid -->

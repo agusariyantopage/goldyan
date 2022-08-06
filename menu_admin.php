@@ -2,7 +2,7 @@
             <a href="index.php?p=pesanan" class="nav-link">
               <i class="nav-icon fas fa-file"></i>
               <p>
-                Data Pokok                
+                Data Pokok
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -11,14 +11,14 @@
                 <a href="index.php?p=provinsi" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Provinsi</p>
-                  
+
                 </a>
               </li>
               <li class="nav-item">
                 <a href="index.php?p=regional" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Regional</p>
-                  
+
                 </a>
               </li>
               <li class="nav-item">
@@ -39,7 +39,13 @@
                   <p>Harga</p>
                 </a>
               </li>
-              
+              <li class="nav-item">
+                <a href="index.php?p=biaya" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Komponen Biaya</p>
+                </a>
+              </li>
+
             </ul>
           </li>
 
@@ -47,7 +53,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-store"></i>
               <p>
-                Transaksi               
+                Transaksi
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -56,7 +62,7 @@
                 <a href="index.php?p=jadwal" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Jadwal</p>
-                  
+
                 </a>
               </li>
               <li class="nav-item">
@@ -65,10 +71,10 @@
                   <p>Realisasi</p>
                 </a>
               </li>
-                          
+
             </ul>
           </li>
-          
+
           <li class="nav-item">
             <a href="index.php?p=jadwal-kolektor" class="nav-link">
               <i class="nav-icon fa fa-truck"></i>
@@ -76,8 +82,17 @@
                 Collecting
               </p>
             </a>
-          </li>          
+          </li>
           
+          <li class="nav-item">
+            <a href="index.php?p=pengeluaran" class="nav-link">
+              <i class="nav-icon far fa-money-bill-alt"></i>
+              <p>
+                Pengeluaran
+              </p>
+            </a>
+          </li>
+
           <li class="nav-item">
             <a href="index.php?p=laporan" class="nav-link">
               <i class="nav-icon fas fa-print"></i>

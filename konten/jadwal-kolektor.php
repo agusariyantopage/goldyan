@@ -100,7 +100,7 @@
                                   <label for="jumlah">Jumlah (Jirigen)</label>
                                   <input type="number" step=".01" id="jumlah" name="jumlah" class="form-control" required>
                                   <label for="harga">Harga Per Jirigen</label>
-                                  <input type="number" name="harga" id="harga" value="<?= $data1['harga']; ?>" class="form-control" required readonly>
+                                  <input type="number" name="harga" id="harga" max="<?= $data1['harga']; ?>" class="form-control" required>
                                   <label for="total">Total</label>
                                   <input type="number" name="total" id="total" value="0" class="form-control" required readonly>
                                   <label for="metode_bayar">Metode Pembayaran</label>
@@ -141,7 +141,7 @@
                     <!-- Kepala Tabel -->
                     <thead>
                       <tr>                      
-                        <td>Proses Terakhir</td>
+                        <td>Tanggal Proses</td>
                         <td>Nama Mitra</td>
                         <td>Metode Bayar</td>                        
                         <td>Petugas</td> 
@@ -167,7 +167,7 @@
                         $no++;
                     ?>                 
                       <tr>                  
-                        <td><?= $kolom['diubah_pada'];; ?></td>
+                        <td><?= $kolom['tanggal_proses'];; ?></td>
                         <td><?= $kolom['nama_client']; ?> (<?= $kolom['regional']; ?>)</td>
                         <td><?= $kolom['metode_bayar']; ?></td>
                         <td><?= $kolom['kolektor']; ?></td>
@@ -234,6 +234,12 @@
       hitung_total();      
     }, false);
     document.getElementById('jumlah').addEventListener("keyup", function (evt) {
+      hitung_total();      
+    }, false);
+    document.getElementById('harga').addEventListener("mouseup", function (evt) {
+      hitung_total();      
+    }, false);
+    document.getElementById('harga').addEventListener("keyup", function (evt) {
       hitung_total();      
     }, false);
     

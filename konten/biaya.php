@@ -6,12 +6,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Harga</h1>
+            <h1 class="m-0">Biaya</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Data Pokok</a></li>
-              <li class="breadcrumb-item active">Harga</li>
+              <li class="breadcrumb-item active">Biaya</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -26,43 +26,71 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3>Data Batas Harga Tertinggi</h3>
+              <h3>Data Biaya</h3>
             </div> 
             <div class="card-body">
               <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#exampleModal">
               <i class="fas fa-plus"></i> Tambah</button>
               
-              <table class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped">
                 <!-- Kepala Tabel -->
                 <thead>
-                  <tr>                    
-                    <td>Tanggal</td>
+                  <tr>
+                    <td>Kode Biaya</td>
+                    <td>Biaya</td>
+                    <td>Dibuat Pada</td>
                     <td>Perubahan Terakhir</td>
-                    <td>Harga</td>                    
+                    <td>Aksi</td>
                   </tr>
                 </thead>
                 <!-- Isi Tabel -->
 <?php
-   $sql="select * from harga order by id_harga desc limit 100";
+   $sql="select * from biaya";
    $query=mysqli_query($koneksi,$sql);
    while($kolom=mysqli_fetch_array($query)){
 ?>                 
                 <tr>
-                  <td><?= $kolom['tanggal']; ?></td>
+                  <td><?= $kolom['id_biaya']; ?></td>
+                  <td><?= $kolom['biaya']; ?></td>
+                  <td><?= $kolom['dibuat_pada']; ?></td>
                   <td><?= $kolom['diubah_pada']; ?></td>
-                  <td align='right'><?= number_format($kolom['harga']); ?></td>                  
+                  <td>
+                    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#editModal<?= $kolom['id_biaya']; ?>"><i class="fas fa-edit"></i></button>                    
+                  </td>
                 </tr>
-               
+<!-- Modal Edit -->
+<div class="modal fade" id="editModal<?= $kolom['id_biaya']; ?>" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Ubah Biaya</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="aksi/biaya.php" method='post'>
+          <input type="hidden" name="aksi" value="ubah">
+          <input type="hidden" name="id" value="<?= $kolom['id_biaya']; ?>">          
+          <label for="biaya">Biaya</label>
+          <input type="text" value="<?= $kolom['biaya']; ?>" required class="form-control" name="biaya">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-primary">Ubah</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>                
 <?php
   }
 ?>                
               </table>
-              NB : Pastikan sudah mengupdate harga sebelum melakukan proses penjadwalan,Harga yang digunakan adalah harga terakhir  
             </div> 
           </div>
         </div>
       </row>
-           
+             
         
       </div><!-- /.container-fluid -->
       
@@ -71,22 +99,20 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- Modal Untuk Tambah Harga -->
+  <!-- Modal Untuk Tambah Biaya -->
  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Harga Baru</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Biaya Baru</h5>
         <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="aksi/harga.php" method="post">
-          <input type="hidden" name="aksi" value="tambah">
-          <label for="tanggal">Tanggal</label>          
-          <input type="date" name="tanggal" class="form-control" required>
-          <label for="harga">Harga</label>
-          <input type="number" required class="form-control" name="harga">        
+        <form action="aksi/biaya.php" method="post">
+          <input type="hidden" name="aksi" value="tambah">          
+          <label for="biaya">Biaya</label>
+          <input type="text" required class="form-control" name="biaya">        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>

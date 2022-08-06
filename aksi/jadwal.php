@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "../koneksi.php";
+    $tgl=date("Y-m-d");
 
     if(!empty($_POST)){
         if($_POST['aksi']=='tambah'){
@@ -44,7 +45,7 @@
             $catatan=$_POST['catatan'];
             $status="Selesai";
 
-            $sql="update jadwal set jumlah=$jumlah,metode_bayar='$metode_bayar',catatan='$catatan',status='$status',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";
+            $sql="update jadwal set jumlah=$jumlah,metode_bayar='$metode_bayar',catatan='$catatan',status='$status',tanggal_proses='$tgl',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";
             //echo $sql;
             mysqli_query($koneksi,$sql);
 
@@ -100,7 +101,7 @@
         }
         else if($_GET['aksi']=='collecting-kosong'){    
             $id_jadwal=$_GET['token'];
-            $sql="update jadwal set status='Kosong',diubah_pada=DEFAULT where md5(id_jadwal)='$id_jadwal'";
+            $sql="update jadwal set status='Kosong',diubah_pada=DEFAULT,tanggal_proses='$tgl' where md5(id_jadwal)='$id_jadwal'";
             mysqli_query($koneksi,$sql);
             // Trigger Popup Sweet Alert
             $sukses=mysqli_affected_rows($koneksi);

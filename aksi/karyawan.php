@@ -64,7 +64,7 @@
             session_destroy();            
             header('location:../login.php');
         }
-        else if(_GET['aksi']=='hapus'){
+        else if($_GET['aksi']=='hapus'){
             $x0=$_GET['id'];
             $sql="delete from karyawan where id_karyawan=$x0";
             mysqli_query($koneksi,$sql);
