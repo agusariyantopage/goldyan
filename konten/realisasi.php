@@ -32,7 +32,7 @@
               <h3>Data Realisasi Collecting</h3>
             </div> 
             <div class="card-body"> 
-              <table id="example1_desc" class="table table-bordered table-striped table-sm">
+              <table id="example1" class="table table-bordered table-striped table-sm">
                 <!-- Kepala Tabel -->
                 <thead>
                   <tr>
@@ -51,7 +51,7 @@
                 <!-- Isi Tabel -->
 <?php
    //$sql="select jadwal.*,id_regional,client.nama as nama_client,karyawan.nama as kolektor from jadwal,client,karyawan where jadwal.id_client=client.id_client and jadwal.id_karyawan=karyawan.id_karyawan and tanggal='$tanggal' order by nama_client";
-   $sql="select jadwal.*,client.id_regional,client.nama as nama_client,karyawan.nama as kolektor,regional.regional from jadwal,client,karyawan,regional where jadwal.id_client=client.id_client and jadwal.id_karyawan=karyawan.id_karyawan and client.id_regional=regional.id_regional and status!='Pending' order by tanggal";
+   $sql="select jadwal.*,client.id_regional,client.nama as nama_client,karyawan.nama as kolektor,regional.regional from jadwal,client,karyawan,regional where jadwal.id_client=client.id_client and jadwal.id_karyawan=karyawan.id_karyawan and client.id_regional=regional.id_regional and status!='Pending' order by tanggal_proses desc";
    $query=mysqli_query($koneksi,$sql);
    $no=0;
    while($kolom=mysqli_fetch_array($query)){
@@ -116,8 +116,10 @@
                             <option>OVO</option>      
                           </select>
                           
+                          <label for="jumlah_liter">Jumlah (Liter)</label>
+                          <input type="number" step=".01" value="<?= $kolom['jumlah_liter']; ?>" required class="form-control" name="jumlah_liter">
                           <label for="jumlah">Jumlah (Jirigen)</label>
-                          <input type="number" value="<?= $kolom['jumlah']; ?>" required class="form-control" name="jumlah">
+                          <input type="number" step=".01" value="<?= $kolom['jumlah']; ?>" required class="form-control" name="jumlah">
                           <label for="status">Status</label>
                           <select name="status" class="form-control" required>
                           <option><?= $kolom['status']; ?></option>      

@@ -41,11 +41,12 @@
         else if($_POST['aksi']=='tambah-pembelian'){
             $id_jadwal=$_POST['id_jadwal'];
             $jumlah=$_POST['jumlah'];
+            $jumlah_liter=$_POST['jumlah_liter'];
             $metode_bayar=$_POST['metode_bayar'];
             $catatan=$_POST['catatan'];
             $status="Selesai";
 
-            $sql="update jadwal set jumlah=$jumlah,metode_bayar='$metode_bayar',catatan='$catatan',status='$status',tanggal_proses='$tgl',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";
+            $sql="update jadwal set jumlah=$jumlah,jumlah_liter=$jumlah_liter,metode_bayar='$metode_bayar',catatan='$catatan',status='$status',tanggal_proses='$tgl',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";
             //echo $sql;
             mysqli_query($koneksi,$sql);
 
@@ -84,8 +85,9 @@
             $id_karyawan=$_POST['id_karyawan'];
             $metode_bayar=$_POST['metode_bayar'];
             $jumlah=$_POST['jumlah'];
+            $jumlah_liter=$_POST['jumlah_liter'];
             $status=$_POST['status'];
-            $sql="update jadwal set tanggal='$tanggal',id_karyawan=$id_karyawan,metode_bayar='$metode_bayar',jumlah=$jumlah,status='$status',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";   
+            $sql="update jadwal set tanggal='$tanggal',id_karyawan=$id_karyawan,metode_bayar='$metode_bayar',jumlah=$jumlah,jumlah_liter=$jumlah_liter,status='$status',diubah_pada=DEFAULT where id_jadwal=$id_jadwal";   
             echo $sql;             
             mysqli_query($koneksi,$sql);
             header('location:../index.php?p=realisasi');

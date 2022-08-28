@@ -97,6 +97,8 @@
                                   <input type="hidden" name="id_jadwal" value="<?= $kolom['id_jadwal']; ?>">
                                   <label for="tanggal">Tanggal Terjadwal</label>
                                   <input type="date" class="form-control" value="<?= $kolom['tanggal']; ?>" readonly>
+                                  <label for="jumlah">Jumlah (Liter)</label>
+                                  <input type="number" step=".01" id="jumlah_liter" name="jumlah_liter" class="form-control" required>
                                   <label for="jumlah">Jumlah (Jirigen)</label>
                                   <input type="number" step=".01" id="jumlah" name="jumlah" class="form-control" required>
                                   <label for="harga">Harga Per Jirigen</label>
